@@ -9,6 +9,7 @@ $nome1 = "Bárbara Nascimento";
 $n1 = 7;
 $n2 = 8;
 $f1 = 8.5476;
+$nome = "paulo";
 
 echo "<h2>Exercicio 05</h2>";
 echo "Alo alo boa noite gente";
