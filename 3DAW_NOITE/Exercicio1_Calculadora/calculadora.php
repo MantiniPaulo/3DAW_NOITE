@@ -5,7 +5,7 @@ $b = $_POST["b"]; //recebe o segundo número do html
 $operação = $_POST["operacao"]; //recebe a informação da seleção da operação no html
 $resp = 0;
 
-//o if descreve seleciona qual operaçõa fazer
+//o if seleciona qual operaçõa fazer
 if ($operação == "soma") {
     echo $resp = ($a + $b);
 } else if ($operação == "subitração") {
