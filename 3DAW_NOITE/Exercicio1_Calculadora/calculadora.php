@@ -1,3 +1,4 @@
+
 <?php
 
 $a = $_POST["a"]; //recebe o primeiro número do html
@@ -5,8 +6,21 @@ $b = $_POST["b"]; //recebe o segundo número do html
 $operação = $_POST["operacao"]; //recebe a informação da seleção da operação no html
 $resultado = 0;
 
-//o if seleciona qual operaçõa fazer
-if ($operação == "soma") {
+if($a == 0 && $b == 0) { //if para verificar números inseridos
+    echo "Operação impossível";
+    echo "<br>";
+    echo "Valores Inválidos";
+    echo "<br>";
+}else if ($a == 0 && $operação == "divisão"){ //if e else para operações de divisões invalidas (pergunta: posso colocar ($a == 0 or $b ==0 && $operação == "divisão")
+    echo "Operação impossível";
+    echo "<br>";
+    echo "Zero não pode ser dividido";
+    echo "<br>";
+}else if ($b == 0 && $operação == "divisão"){
+    echo "Operação impossível";
+    echo "<br>";
+    echo "Um número não pode ser dividido por zero";    
+}else if ($operação == "soma") { //if seleciona qual operaçõa fazer
     echo $resultado
  = ($a + $b);
 } else if ($operação == "subitração") {
@@ -19,5 +33,19 @@ if ($operação == "soma") {
     echo $resultado
  = ($a / $b);
 }
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+</head>
+<body>
+    <form action="calculadora.html"method="POST"></form>
+    <input type="submit" value="Voltar"; 
+</body>
+</html>
+
