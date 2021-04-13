@@ -1,4 +1,3 @@
-
 <?php
 
 $a = $_POST["a"]; //recebe o primeiro número do html
@@ -16,21 +15,22 @@ if($a == 0 && $b == 0) { //if para verificar números inseridos
     echo "<br>";
     echo "Um número não pode ser dividido por zero";    
 }else if ($operação == "soma") { //if seleciona qual operaçõa fazer
-    echo $resultado
+    echo "Resultado: " . $resultado
  = ($a + $b);
 } else if ($operação == "subitração") {
-    echo $resultado
+    echo "Resultado: " . $resultado
  = ($a - $b);
 } else if ($operação == "multiplicação") {
-    echo $resultado
+    echo "Resultado: " . $resultado
  = ($a * $b);
 } else {
-    echo $resultado
+    echo "Resultado: " . $resultado
  = ($a / $b);
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
