@@ -17,7 +17,7 @@ if($a == 0 && $b == 0) { //if para verificar números inseridos
 }else if ($operação == "soma") { //if seleciona qual operaçõa fazer
     echo "Resultado: " . $resultado
  = ($a + $b);
-} else if ($operação == "subitração") {
+} else if ($operação == "subtração") {
     echo "Resultado: " . $resultado
  = ($a - $b);
 } else if ($operação == "multiplicação") {
