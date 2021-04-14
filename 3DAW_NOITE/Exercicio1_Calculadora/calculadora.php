@@ -3,14 +3,9 @@
 $a = $_POST["a"]; //recebe o primeiro número do html
 $b = $_POST["b"]; //recebe o segundo número do html
 $operação = $_POST["operacao"]; //recebe a informação da seleção da operação no html
-$resultado = 0;
 
-if($a == 0 && $b == 0) { //if para verificar números inseridos
-    echo "Operação impossível";
-    echo "<br>";
-    echo "Valores Inválidos";
-    echo "<br>";
-}else if ($b == 0 && $operação == "divisão"){
+
+if ($b == 0 && $operação == "divisão"){
     echo "Operação impossível";
     echo "<br>";
     echo "Um número não pode ser dividido por zero";    
