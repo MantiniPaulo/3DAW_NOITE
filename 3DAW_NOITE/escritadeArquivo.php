@@ -9,7 +9,7 @@ fwrite($arquivoSaida, $linhaArquivo);
 $linhaArquivo = "josé da silva;ze@gmail.com;20211123456\n";
 fwrite($arquivoSaida, $linhaArquivo);
 fclose($arquivoSaida);
-
+fclose($arquivoSaida);
 
 file_put_contents ("C:\\xampp\\htdocs\\3DAW\\3DAW_NOITE\\alunosNovosExp.csv", $linhaArquivo, FILE_APPEND);
 ?>
