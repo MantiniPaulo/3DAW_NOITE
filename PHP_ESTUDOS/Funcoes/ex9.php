@@ -48,7 +48,9 @@ $hierarquia = array(
             )
             //ter. Diretor financeiro
         )
-        //ter. diretor comercial    
+        //ter. diretor comercial  
+        
+        //novo
     )
 )
 
