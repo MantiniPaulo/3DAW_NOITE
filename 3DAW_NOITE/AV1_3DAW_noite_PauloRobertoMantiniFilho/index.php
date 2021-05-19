@@ -1,42 +1,27 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"]  == "POST"){
-$disciplina = $_POST["disciplina"];
-$periodo = $_POST["periodo"];
-$requisito = $_POST["requisito"];
-$credito = $_POST["credito"];
-
-function validarDados(string $disciplina, string $periodo, string $requisito, int $credito)
-{
-
-}
-
-function criarDisciplina()
-{
-
-}
-
-function alterarDisciplina()
-{
+if ($_SERVER["REQUEST_METHOD"]  == "POST")
+{    
+    $id_disciplina = (isset($_POST["id_disciplina"])?$_POST["id_disciplina"]:false);
+    $disciplina = (isset($_POST["disciplina"])?$_POST["disciplina"]:false);
+    $periodo = (isset($_POST["periodo"])?$_POST["periodo"]:false);
+    $idPrerequesito = (isset($_POST["idPrerequesito"])?$_POST["idPrerequesito"]:false);
+    $credito = (isset($_POST["credito"])?$_POST["credito"]:false);
+    $id = (isset($_POST["id"])?$_POST["id"]:false);
+    $nome = (isset($_POST["nome"])?$_POST["nome"]:false);
+    $email = (isset($_POST["email"])?$_POST["email"]:false);
+    $senha = (isset($_POST["senha"])?$_POST["senha"]:false);
+    $tipo = (isset($_POST["tipo"])?$_POST["tipo"]:false);
+    $perfil = (isset($_POST["perfil"])?$_POST["perfil"]:false);     
 
 }
-
-function listarDisciplinas()
-{
-
-}
-
-function listarUmaDisciplina()
-{
-
-}
-
-function excluirDisciplina()
-{
-
-}
-
-}
-
+    //Criar conexão com o banco de dados
+    
+    $strcon = mysqli_connect('localhost','root','','banco_av1') or die('Erro ao conectar ao banco de dados');
+    $sql = "INSERT INTO disciplinas VALUES ";
+    $sql .= "('$disciplina', '$periodo', '$idPrerequesito', '$credito')"; 
+    
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -50,41 +35,40 @@ function excluirDisciplina()
 <body>
     
     <div class="criacaoDisciplina">
-    <h2>Criação, Alteração e Listagem de Disciplina</h2>
-    <form action="index.php" method="POST">        
-        <select name="funcionalidades">
-        <option value=""> Selecione a Funcionalidade </option>
-        <option value="criarDisciplina"> - Criar Disciplina</option>
-        <option value="alterarDisciplina"> - Alterar Disciplina</option>
-        <option value="listarDisciplinas"> - Listar Disciplinas</option>
-        <option value="lsitarUmaDisciplina"> - Listar uma Disciplina</option>
-        <option value="excluirDisciplina"> - Excluir Disciplina</option>             
-        <br><br>        
-        </select>
-        <br><br>
-        Nome da Disciplina: (ex: Matématica, Biologia, História,...) <br> 
-        <input name="disciplina"/>
-        <br>
-        Periodo: (noturno ou diurno) <br> 
-        <input name="periodo"/>
-        <br>
-        Pre Requesito (sim ou não): <br> 
-        <input name="requisito"/>
-        <br>
-        Creditos: <br> 
-        <input type="number" name="credito"/>  
-        <br><br>
-        <input type="submit" value = "Executar"/>
+    <form action="index.php" method="POST"> 
+        <h1>Criação, Alteração e Listagem de Disciplina</h1>       
+        <hr>
+        <input type="hidden" name="id_disciplina" />
+        Disciplina:
+        <input type="text" name="disciplina"/>        
+        Periodo:
+        <input type="text" name="periodo"/>
+        ID Prerequesito:
+        <input type="number" name="idPrerequesito"/>
+        Creditos:
+        <input type="number" name="credito"/>
+        <input type="submit" value="Criar Disciplina"/>
+        <input type="reset" value="Novo"/>
+        <hr>    
     </form>
-    </div>
-    
+    </div>    
     <div class="carregarUsuario">
-    <h2>Carregar Novo Usuário</h2> 
-    
-
-        <br><br>
-        <input type="submit" value = "Carregar Arquivo"/>
-
+        <h1>Adicionar Novo Usuário</h1>
+        <hr>
+        <input type="hidden" name="id" />
+        Nome:
+        <input type="text" name="nome" />
+        E-mail:
+        <input type="text" name="email" />
+        Senha:
+        <input type="number" name="senha" />
+        Tipo:
+        <input type="text" name="tipo" />
+        Perfil: 
+        <input type="text" name="perfil" />
+        <input type="submit" value="Criar Usuário"/>
+        <input type="reset" value="Novo"/>
+        <br>
     </div>
     
    

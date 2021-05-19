@@ -5,6 +5,10 @@ $usuario = "root";
 $senha = "";
 $nomeBanco = "faeterj3dawnoite";
 $conn = new mysqli($servidor, $usuario, $senha, $nomeBanco);
+if ($conn->connect_error)
+{
+    echo "Desconectado"
+}
 
 //passar o comando para ler a tabela no mysqli
 $query = "SELECT * FROM alunos";
