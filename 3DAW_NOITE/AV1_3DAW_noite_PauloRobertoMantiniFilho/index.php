@@ -1,27 +1,19 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"]  == "POST")
-{    
-    $id_disciplina = (isset($_POST["id_disciplina"])?$_POST["id_disciplina"]:false);
-    $disciplina = (isset($_POST["disciplina"])?$_POST["disciplina"]:false);
-    $periodo = (isset($_POST["periodo"])?$_POST["periodo"]:false);
-    $idPrerequesito = (isset($_POST["idPrerequesito"])?$_POST["idPrerequesito"]:false);
-    $credito = (isset($_POST["credito"])?$_POST["credito"]:false);
-    $id = (isset($_POST["id"])?$_POST["id"]:false);
-    $nome = (isset($_POST["nome"])?$_POST["nome"]:false);
-    $email = (isset($_POST["email"])?$_POST["email"]:false);
-    $senha = (isset($_POST["senha"])?$_POST["senha"]:false);
-    $tipo = (isset($_POST["tipo"])?$_POST["tipo"]:false);
-    $perfil = (isset($_POST["perfil"])?$_POST["perfil"]:false);     
-
-}
-    //Criar conexão com o banco de dados
-    
-    $strcon = mysqli_connect('localhost','root','','banco_av1') or die('Erro ao conectar ao banco de dados');
-    $sql = "INSERT INTO disciplinas VALUES ";
-    $sql .= "('$disciplina', '$periodo', '$idPrerequesito', '$credito')"; 
+<?php 
+    $resultado = (isset($_GET["resultado"])?$_GET["resultado"]:false);
+    if (isset($_server["HTTP_REFERRER"]))
+    {
+        echo " ";
+    }
+    else if ($resultado == 1) 
+    {
+        echo "Procedimento efetutado";
+    } else
+    {
+        echo "Erro. Favor inserir dados válidos";
+    }
     
     
-    
+        
 ?>
 
 <!DOCTYPE html>
@@ -35,26 +27,43 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST")
 <body>
     
     <div class="criacaoDisciplina">
-    <form action="index.php" method="POST"> 
+    <form action="disciplina.php" method="POST"> 
         <h1>Criação, Alteração e Listagem de Disciplina</h1>       
         <hr>
-        <input type="hidden" name="id_disciplina" />
+        <input type="hidden" name="operacao" value="incluir"/>
         Disciplina:
         <input type="text" name="disciplina"/>        
         Periodo:
-        <input type="text" name="periodo"/>
+        <input type="number" name="periodo"/>
         ID Prerequesito:
         <input type="number" name="idPrerequesito"/>
         Creditos:
         <input type="number" name="credito"/>
         <input type="submit" value="Criar Disciplina"/>
         <input type="reset" value="Novo"/>
-        <hr>    
+        <hr> 
     </form>
-    </div>    
+        <br>
+        <?php
+            $strcon = new mysqli('localhost','root','','banco_av1') or die('Erro ao conectar ao banco de dados');
+            $valores = $strcon->query("SELECT `nome`, `periodo`, `idPrerequesito`, `creditos` FROM `disciplinas`");
+            $linhas = $valores->num_rows;
+            for ( $i =0;$i<$linhas; $i++)
+            {
+                $reg = $valores->fetch_row();
+                echo "disciplina: $reg[0] | periodo: $reg[1] | prerequesito: $reg[2] | creditos: $reg[3]<hr>";
+            }
+            $strcon->close();
+        ?>   
+    </table>     
+    
+    </div> 
+
     <div class="carregarUsuario">
+    <form action="usuario.php" method="POST">
         <h1>Adicionar Novo Usuário</h1>
         <hr>
+        <input type="hidden" name="operacao" value="inclui"/>
         <input type="hidden" name="id" />
         Nome:
         <input type="text" name="nome" />
@@ -68,7 +77,22 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST")
         <input type="text" name="perfil" />
         <input type="submit" value="Criar Usuário"/>
         <input type="reset" value="Novo"/>
+        <hr>
+    </form>    
         <br>
+        <?php
+            $strcon1 = new mysqli('localhost','root','','banco_av1') or die('Erro ao conectar ao banco de dados');
+            $valores = $strcon1->query("SELECT `nome`, `email`, `senha`, `tipo`, `perfil` FROM `usuario`");
+            $linhas = $valores->num_rows;
+            for ( $i =0;$i<$linhas; $i++)
+            {
+                $reg = $valores->fetch_row();
+                echo "Nome: $reg[0] | email: $reg[1] | tipo: $reg[3] | perfil: $reg[4]<hr>";
+            }
+            $strcon1->close();
+            
+        ?>
+    </table>
     </div>
     
    
