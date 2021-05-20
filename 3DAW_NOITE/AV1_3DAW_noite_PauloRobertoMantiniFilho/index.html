@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV1 - Paulo Roberto Mantini Filho</title>
+    <style>
+        #esquerda {
+            position: relative;
+            border-width: 2px;
+            width: 400px;
+            height: 100px;
+            left: 0px;
+            float: left;
+        }
+
+        #direita {
+            position: relative;
+            border-width: 2px;
+            width: 400px;
+            height: 100px;
+            float: left;
+        }
+
+        #direita2 {
+            position: relative;
+            border-width: 2px;
+            width: 300px;
+            height: 100px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Av1 - Aluno: Paulo Roberto Mantini Filho</h2>
+        <hr>
+        <div id="esquerda" class="container-md">
+            <form class="container" action="disciplina.php" method="POST">
+                <h2>Criação de Disciplina</h2>
+                <hr>
+                <input type="hidden" class="row" name="operacao" value="incluir" />
+
+
+                Disciplina:
+                <input type="text" class="row" name="disciplina" required /> <br>
+                Periodo:
+                <input type="number" class="row" name="periodo" required /> <br>
+                ID Prerequesito:
+                <input type="number" class="row" name="idPrerequesito" required /> <br>
+                Creditos:
+                <input type="number" class="row" name="credito" required /><br>
+                <input type="submit" class="btn btn-primary" value="Criar Disciplina" />
+                
+                <hr>
+            </form>
+            </table>
+            <br>
+        </div>
+
+        <div id="direita" class="container-md">
+            <form class="container" action="usuario.php" method="POST">
+                <h2>Criação de Usuário</h2>
+                <hr>
+                
+                <h6>Cadastro de usuários manualmente</h6>
+                <input type="hidden" name="operacao" value="inclui" />
+                <input type="hidden" name="id" /> <br>
+                Nome:
+                <input type="text" class="row" name="nome" /><br>
+                E-mail:
+                <input type="text" class="row" name="email" /><br>
+                *Senha:
+                <input type="number" class="row" name="senha" /><br>
+                Tipo:
+                <input type="text" class="row" name="tipo" /><br>
+                Perfil:
+                <input type="text" class="row" name="perfil" /> <br>
+                <h6>Cadastro de usuários por upload de arquivo</h6>
+                <input type="file" class="btn btn-primary" name="arquivo" /> <br><br>
+                <input type="submit" class="btn btn-primary" value="Criar Usuário" />
+                <hr>
+            </form>
+            </table>
+        </div>
+        <div id="direita2" class="container-md">
+            <form class="container" action="disciplina.php" method="POST">
+                <h2>Listar e Buscar</h2>
+                <hr>
+                <input type="hidden" class="row" name="operacao" value="listarUsuario" />
+                <input type="hidden" class="row" name="operacao" value="buscarUsuario" />
+                <input type="hidden" class="row" name="operacao" value="listarDisciplina" />
+                <input type="hidden" class="row" name="operacao" value="buscarDisciplina" />
+
+                <input type="submit" class="btn btn-primary" value="Listar Usuários" /><br><br>
+                <input type="submit" class="btn btn-primary" value="Buscar Usuário" /><br><br>
+                <input type="submit" class="btn btn-primary" value="Listar Disciplinas" /><br><br>
+                <input type="submit" class="btn btn-primary" value="Buscar Disciplina" /><br><br>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+</script>
+
+</html>
