@@ -56,7 +56,7 @@
                 Creditos:
                 <input type="number" class="row" name="credito" required /><br>
                 <input type="submit" class="btn btn-primary" value="Criar Disciplina" />
-                
+
                 <hr>
             </form>
             </table>
@@ -67,7 +67,7 @@
             <form class="container" action="usuario.php" method="POST">
                 <h2>Criação de Usuário</h2>
                 <hr>
-                
+
                 <h6>Cadastro de usuários manualmente</h6>
                 <input type="hidden" name="operacao" value="inclui" />
                 <input type="hidden" name="id" /> <br>
@@ -91,24 +91,24 @@
         <div id="direita2" class="container-md">
             <form class="container" action="disciplina.php" method="POST">
                 <h2>Listar e Buscar</h2>
-                <hr>                
+                <hr>
                 <input type="hidden" class="row" name="operacao" value="listarDisciplina" />
                 <input type="submit" class="btn btn-primary" value="Listar Disciplinas" /><br><br>
-            </form> 
-            <form class="container" action="disciplina.php" method="POST">                                
+            </form>
+            <form class="container" action="disciplina.php" method="POST">
                 <input type="hidden" class="row" name="operacao" value="buscarDisciplina" />
                 <input type="submit" class="btn btn-primary" value="Buscar Disciplina" /><br><br>
-            </form> 
-            <form class="container" action="usuario.php" method="POST">                                
+            </form>
+            <form class="container" action="usuario.php" method="POST">
                 <input type="hidden" class="row" name="operacao" value="listarUsuario" />
                 <input type="submit" class="btn btn-primary" value="Listar Usuários" /><br><br>
-            </form> 
-            <form class="container" action="usuario.php" method="POST">                               
+            </form>
+            <form class="container" action="usuario.php" method="POST">
                 <input type="hidden" class="row" name="operacao" value="buscarUsuario" />
                 <input type="submit" class="btn btn-primary" value="Buscar Usuário" /><br><br>
-            </form>       
-                       
-                
+            </form>
+
+
         </div>
 
     </div>
@@ -121,27 +121,26 @@
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
 </script>
 <script>
-    window.onload = function()
-    {
-        queryString("resultado")=="1"?alert("Inserido Com Sucesso"):" ";
+    window.onload = function () {
+        queryString("resultado") == "1" ? alert("Operação Efetuada com Sucesso") : " ";
     }
-    function queryString(parameter) {  
-              var loc = location.search.substring(1, location.search.length);   
-              var param_value = false;   
-              var params = loc.split("&");   
-              for (i=0; i<params.length;i++) {   
-                  param_name = params[i].substring(0,params[i].indexOf('='));   
-                  if (param_name == parameter) {                                          
-                      param_value = params[i].substring(params[i].indexOf('=')+1)   
-                  }   
-              }   
-              if (param_value) {   
-                  return param_value;   
-              }   
-              else {   
-                  return false;   
-              }   
+
+    function queryString(parameter) {
+        var loc = location.search.substring(1, location.search.length);
+        var param_value = false;
+        var params = loc.split("&");
+        for (i = 0; i < params.length; i++) {
+            param_name = params[i].substring(0, params[i].indexOf('='));
+            if (param_name == parameter) {
+                param_value = params[i].substring(params[i].indexOf('=') + 1)
+            }
         }
+        if (param_value) {
+            return param_value;
+        } else {
+            return false;
+        }
+    }
 </script>
 
 </html>
