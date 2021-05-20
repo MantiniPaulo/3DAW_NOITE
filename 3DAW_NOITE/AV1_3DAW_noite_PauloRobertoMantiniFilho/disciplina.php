@@ -68,8 +68,7 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST")
                 echo '<tr>';
                 $reg = $valores->fetch_row();
                 echo "<th>$reg[1]</th> <th>$reg[2]</th> <th>$reg[3]</th> <th>$reg[4]</th><th><a class='btn btn-warning' href='?act=upd&id=".$reg[0]."'>Alterar</a> 
-                <a class='btn btn-danger' href='?act=del&id=".$reg[0]."'>Excluir</a></th>";                
-                
+                <a class='btn btn-danger' href='?act=del&id=".$reg[0]."'>Excluir</a></th>";             
                 echo '</tr>';       
                           
             }
@@ -79,22 +78,19 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST")
             $strcon->close();         
     } else if ($operacao == "buscarDisciplina")
     {
-
         $valores = $strcon->query("SELECT `id_disciplina`, `nome`, `periodo`, `idPrerequesito`, `creditos` FROM `disciplinas`");
         $reg = $valores->fetch_row();
         echo '<div class="container">';
-        echo '<form class="container" action="usuario.php?act=pes" method="POST">';
+        echo '<form class="container" action="pesquisaDisciplina.php?act=pes" method="POST">';
         echo "Qual disciplina deseja pesquisar?";
         echo '<br>';
-        echo "<input type='text' class='row'/>";
+        echo "<input type='text' class='row' name='consulta'/>";
         echo '<br>';
+        echo '<input type="hidden" class="row" name="operacao" value="pesquisaDisciplina" />';
         echo "<input type='submit' class='btn btn-primary' value='Pesquisar'/>";
         echo '</form>';
         echo '</div>';
-
-    }   
-    
-        
+    }        
 } 
 ?>
 <div class="container">
@@ -110,5 +106,6 @@ function voltar() {
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+</script>
 </html>
 

@@ -69,8 +69,21 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST")
         echo '</table>';
         echo '</div>';
         $strcon->close();
+    } else if ($operacao == "buscarUsuario")
+    {
+        $valores = $strcon->query("SELECT `id_disciplina`, `nome`, `periodo`, `idPrerequesito`, `creditos` FROM `disciplinas`");
+        $reg = $valores->fetch_row();
+        echo '<div class="container">';
+        echo '<form class="container" action="pesquisaUsuario.php?act=pes" method="POST">';
+        echo "Qual usuário deseja pesquisar?";
+        echo '<br>';
+        echo "<input type='text' class='row' name='consulta1'/>";
+        echo '<br>';
+        echo '<input type="hidden" class="row" name="operacao" value="pesquisaUsuario" />';
+        echo "<input type='submit' class='btn btn-primary' value='Pesquisar'/>";
+        echo '</form>';
+        echo '</div>';
     }    
-
 } 
 
 ?>
