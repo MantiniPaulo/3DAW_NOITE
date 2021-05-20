@@ -29,7 +29,7 @@
         }
     }
 ?>
- <div class="container">
+<div class="container">
     <a style="cursor: pointer;" title="Voltar" onclick="voltar()">Voltar página anterior</a>
 </div>
 
