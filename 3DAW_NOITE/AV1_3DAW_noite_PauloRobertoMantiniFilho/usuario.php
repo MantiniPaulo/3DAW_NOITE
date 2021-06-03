@@ -91,6 +91,7 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST")
 
         foreach($dados as $linhas)
         {
+            
             $valores = $strcon->query("SELECT `id`, `nome`, `email`, `senha`, `tipo`, `perfil` FROM `usuario`");               
 
             $result_usuario = "INSERT INTO `usuario`(`id`, `nome`, `email`, `senha`, `tipo`, `perfil`) VALUES ('$id','$nome','$email','$senha','$tipo','$perfil')";
