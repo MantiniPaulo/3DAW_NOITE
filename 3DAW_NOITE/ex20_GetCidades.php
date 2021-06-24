@@ -1,13 +1,26 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $servidor = "localhost";
+    $usuario = "root";
+    $senha = "";
+    $nomeBanco = "faeterj3dawnoite";
+    $conn = new mysqli($servidor, $usuario, $senha, $nomeBanco);
+    
     $cidadesRio = array("angra", "Rio de janeiro", "Petropolis");
     $estado = $_GET["estado"];
-    if ($estado == "RJ") {
-        echo "Rio de Janeiro";
-    } else {
-        echo "Salvador";
-    }
+    
+    $query = "SELECT * FROM estado WHERE uf ='$estado'";
+    $result = $conn->query($query);
+    $linha = $result->fetch_assoc();
+    $idEstado = $linha["id"];
 
+    $query2 = "SELECT * FROM cidade WHERE estado = $idEstado";
+    $result2 = $conn->query($query2);
+    $linha2 = $result2->fetch_assoc();
+    $nomeCidade = $linha2["nome"];
+
+    //echo $nomeCidade;
+    echo $nomeCidade;
 }
 
 ?>
