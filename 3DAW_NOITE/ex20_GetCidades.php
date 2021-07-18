@@ -5,22 +5,26 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $senha = "";
     $nomeBanco = "faeterj3dawnoite";
     $conn = new mysqli($servidor, $usuario, $senha, $nomeBanco);
-    
+
     $cidadesRio = array("angra", "Rio de janeiro", "Petropolis");
     $estado = $_GET["estado"];
-    
-    $query = "SELECT * FROM estado WHERE uf ='$estado'";
+
+    // passar o comando sql para ler a tabela
+    $query = "SELECT * FROM estado where uf = '$estado'";
     $result = $conn->query($query);
     $linha = $result->fetch_assoc();
     $idEstado = $linha["id"];
 
-    $query2 = "SELECT * FROM cidade WHERE estado = $idEstado";
+    $query2 = "SELECT * FROM cidade where estado = $idEstado";
     $result2 = $conn->query($query2);
     $linha2 = $result2->fetch_assoc();
     $nomeCidade = $linha2["nome"];
+    
 
     //echo $nomeCidade;
-    echo $nomeCidade;
-}
+    echo $nomeCidade;      
+}    
+    
+    
 
 ?>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex 21 Inserir Aluno</title>
+    <!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function mostraInfo(strUF) {
+            console.log(strUF);
+            if (strUF.length > 0) {
+                let xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() {
+                    console.log("ReadyState: " + this.readyState);
+                    if (this.readyState == 4 && this.status == 200) {
+                        let obj = JSON.parse(this.responseText);
+                        let cities = document.getElementById("cidades");
+                         for (i=0;i<obj.length;i++) {
+                            console.log("cidade: " + obj[i]);
+                            let city = new Option(obj[i], obj[i]);
+                            cities.options.add(city);
+                        }
+                    }
+                }
+                xmlHttp.open("GET", "https://localhost/3daw_noite/ex20_GetCidades.php?estado=" + strUF, true);
+                xmlHttp.send();
+                console.log("requisição enviada");
+            }
+        }
+        function inserirAluno(){
+            let objAluno = document.getElementById("formAluno")
+            let msg = validarAluno(objAluno);
+            if (msg == ""){
+                let xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() {                    
+                    if (this.readyState == 4 && this.status == 200) {
+                        //let obj = JSON.parse(this.responseText);
+                        document.getElementById("resposta").innerHTML = this.responseText; //obj.value;
+                    }
+                }
+                xmlHttp.open("GET", "https://localhost/3daw_noite/ex21_inseriraluno.php?nome=" + objAluno.nome + "&email=" + objAluno.email + "&cpf=" + objAluno.cpf + "&matricula=" + objAluno.matricula + "&uf=" + objAluno.uf + "&cidade=Rio" + objAluno.cidade, true);
+
+                xmlHttp.send();
+                console.log("requisição enviada");
+            }
+        }
+        function validarAluno(fAluno){
+            return "";
+        }
+    </script>
+</head>
+<body>
+    <h3>Leitura DB</h3>
+    <form action="" method="post" name="Aluno" id="formAluno">
+        Nome: <input type="text" name="nome"> <br><br>
+        Email: <input type="text" name="email"> <br><br>
+        CPF: <input type="text" name="cpf"> <br><br>
+        Matricula: <input type="text" name="matricula"> <br><br>
+        Estado: <input type="text" id="uf" name="uf" onchange="mostraInfo(this.value)"> <br><br>
+        Cidade:  <select id="cidades"></select> <br><br>
+        <input type="button" name="op" value="Inserir Aluno" onclick="inserirAluno()">
+    </form>
+    <p id="resposta"></p>
+    </body>
+    </html>
