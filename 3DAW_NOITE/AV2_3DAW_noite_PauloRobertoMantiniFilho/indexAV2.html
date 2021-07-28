@@ -304,6 +304,7 @@
                         preencherProduto(produto);
                         document.getElementById("exampleModalLabel").textContent = "Busca"
                         document.getElementById("btnProduto").style.display = "none"
+                        document.getElementById("btnSalvar").style.display = "none"
                         $("#modalinserirProdutos").modal();
                         
                     }
@@ -445,6 +446,7 @@
     function btnInserirProduto(){
         document.getElementById("exampleModalLabel").textContent = "Inserir Produto";
         limparCampos();
+        document.getElementById("btnSalvar").style.display = "none"
         document.getElementById("btnProduto").style.display = "initial";
     }
 
@@ -536,8 +538,9 @@
                     var produto = JSON.parse(this.responseText);
                     if(produto != null){
                         preencherProduto(produto);
+                        document.getElementById("btnProduto").style.display = "none"
                         document.getElementById("exampleModalLabel").textContent = "Editar"
-                        document.getElementById("btnProduto").style.display = "initial"
+                        
                         document.getElementById("btnSalvar").style.display = "initial"
                         $("#modalinserirProdutos").modal();
                         document.getElementById("btnSalvar").onclick = salvarProduto;
